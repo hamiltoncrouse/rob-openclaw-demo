@@ -1,0 +1,149 @@
+:root{
+  --radius: 18px;
+  --shadow: 0 18px 60px rgba(0,0,0,.35);
+}
+
+.app{
+  min-height: 100vh;
+  position: relative;
+}
+
+.theme-dark{
+  --bgc: #0b0f17;
+  --panel: rgba(255,255,255,.06);
+  --panel2: rgba(255,255,255,.10);
+  --text: rgba(255,255,255,.92);
+  --muted: rgba(255,255,255,.70);
+  --border: rgba(255,255,255,.12);
+}
+
+.theme-light{
+  --bgc: #f7f6f2;
+  --panel: rgba(10,15,23,.05);
+  --panel2: rgba(10,15,23,.08);
+  --text: rgba(10,15,23,.92);
+  --muted: rgba(10,15,23,.66);
+  --border: rgba(10,15,23,.12);
+}
+
+.wrap{max-width: 1100px; margin: 0 auto; padding: 0 22px}
+
+.top{
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  backdrop-filter: blur(14px);
+  border-bottom: 1px solid var(--border);
+  background: linear-gradient(to bottom, rgba(0,0,0,.35), rgba(0,0,0,.08));
+}
+.theme-light .top{
+  background: linear-gradient(to bottom, rgba(255,255,255,.85), rgba(255,255,255,.55));
+}
+
+.nav{display:flex; align-items:center; justify-content:space-between; gap:14px; padding: 14px 0}
+.brand{display:flex; align-items:center; gap: 12px}
+.brandMark{width: 34px; height: 34px}
+.brandTitle{font-weight: 900; letter-spacing: -0.01em; color: var(--text)}
+.brandSub{opacity: .75; color: var(--muted)}
+
+.actions{display:flex; gap: 10px; flex-wrap: wrap}
+
+.hero{padding: 28px 0 10px}
+.heroGrid{display:grid; grid-template-columns: 1.3fr .7fr; gap: 14px; align-items: center}
+.hero h1{margin:0; font-size: clamp(2rem, 3.8vw, 3rem); letter-spacing: -0.02em; color: var(--text)}
+
+.muted{color: var(--muted); line-height: 1.65}
+
+.chips{display:flex; gap: 10px; flex-wrap: wrap; margin-top: 12px}
+.chip{border:1px solid var(--border); background: var(--panel); padding: 6px 10px; border-radius: 999px; color: var(--text); opacity: .9}
+
+.grid{
+  display:grid;
+  grid-template-columns: repeat(12, 1fr);
+  gap: 12px;
+  padding: 16px 0 44px;
+}
+
+.card{
+  grid-column: span 6;
+  border: 1px solid var(--border);
+  background: var(--panel);
+  border-radius: var(--radius);
+  padding: 14px;
+  box-shadow: var(--shadow);
+}
+
+.cardWide{grid-column: span 12}
+
+.card h2{margin: 0 0 6px; color: var(--text)}
+
+.heroCard{
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  overflow: hidden;
+  background: var(--panel);
+  box-shadow: var(--shadow);
+}
+
+.avatar{display:block; width: 100%; height: 220px; object-fit: cover}
+.heroCardBody{padding: 12px 14px}
+.k{font-weight: 900; color: var(--text)}
+.v{color: var(--muted); margin-top: 4px}
+
+textarea{
+  width: 100%;
+  padding: 12px;
+  border-radius: 14px;
+  border: 1px solid var(--border);
+  background: rgba(255,255,255,.03);
+  color: var(--text);
+  resize: vertical;
+  outline: none;
+}
+.theme-light textarea{background: rgba(10,15,23,.03)}
+
+.mono{white-space: pre-wrap; font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace; color: var(--text)}
+
+.range input{width: 100%}
+.rangeMeta{display:flex; gap: 8px; align-items: baseline; margin-top: 8px; color: var(--text)}
+
+.pill{
+  border: 1px solid var(--border);
+  background: linear-gradient(135deg, rgba(125,211,252,.86), rgba(246,193,119,.78));
+  color: rgba(0,0,0,.86);
+  border-radius: 999px;
+  padding: 9px 12px;
+  cursor: pointer;
+  font-weight: 900;
+  text-decoration: none;
+}
+.pillGhost{background: var(--panel); color: var(--text)}
+
+.row{display:flex; gap: 12px; align-items:center; flex-wrap: wrap; margin-top: 12px}
+
+.hint{margin-top: 8px}
+
+.footer{padding: 22px 0 44px; border-top: 1px solid var(--border)}
+
+.bg{
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  background:
+    radial-gradient(900px 500px at 10% 0%, rgba(246,193,119,.14), transparent 60%),
+    radial-gradient(900px 540px at 80% -10%, rgba(125,211,252,.20), transparent 60%),
+    var(--bg),
+    var(--bgc);
+  background-size: cover;
+  background-position: center;
+}
+
+@media (max-width: 900px){
+  .heroGrid{grid-template-columns: 1fr}
+  .card{grid-column: span 12}
+  .avatar{height: 200px}
+}
+
+@media (prefers-reduced-motion: reduce){
+  *{scroll-behavior:auto !important; transition:none !important; animation:none !important}
+}

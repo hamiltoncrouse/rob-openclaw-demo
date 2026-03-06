@@ -1,0 +1,7 @@
+services:
+  - type: web
+    name: rob-openclaw-demo
+    runtime: static
+    branch: main
+    buildCommand: npm ci && npm run build
+    staticPublishPath: dist
