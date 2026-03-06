@@ -10,11 +10,11 @@
 
 .theme-dark{
   --bgc: #0b0f17;
-  --panel: rgba(255,255,255,.06);
-  --panel2: rgba(255,255,255,.10);
-  --text: rgba(255,255,255,.92);
-  --muted: rgba(255,255,255,.70);
-  --border: rgba(255,255,255,.12);
+  --panel: rgba(255,255,255,.10);
+  --panel2: rgba(255,255,255,.14);
+  --text: rgba(255,255,255,.93);
+  --muted: rgba(255,255,255,.74);
+  --border: rgba(255,255,255,.14);
 }
 
 .theme-light{
@@ -67,11 +67,14 @@
 .card{
   grid-column: span 6;
   border: 1px solid var(--border);
-  background: var(--panel);
+  background: color-mix(in oklab, var(--panel), transparent 0%);
   border-radius: var(--radius);
   padding: 14px;
   box-shadow: var(--shadow);
+  backdrop-filter: blur(10px);
 }
+.theme-dark .card{background: rgba(11,15,23,.55)}
+.theme-light .card{background: rgba(255,255,255,.72)}
 
 .cardWide{grid-column: span 12}
 
@@ -83,9 +86,16 @@
   overflow: hidden;
   background: var(--panel);
   box-shadow: var(--shadow);
+  backdrop-filter: blur(10px);
 }
 
-.avatar{display:block; width: 100%; height: 220px; object-fit: cover}
+.avatar{
+  display:block;
+  width: 100%;
+  height: 260px;
+  object-fit: cover;
+  object-position: center 20%;
+}
 .heroCardBody{padding: 12px 14px}
 .k{font-weight: 900; color: var(--text)}
 .v{color: var(--muted); margin-top: 4px}
@@ -130,18 +140,30 @@ textarea{
   inset: 0;
   z-index: -1;
   background:
-    radial-gradient(900px 500px at 10% 0%, rgba(246,193,119,.14), transparent 60%),
-    radial-gradient(900px 540px at 80% -10%, rgba(125,211,252,.20), transparent 60%),
+    radial-gradient(900px 500px at 10% 0%, rgba(246,193,119,.12), transparent 60%),
+    radial-gradient(900px 540px at 80% -10%, rgba(125,211,252,.16), transparent 60%),
     var(--bg),
     var(--bgc);
   background-size: cover;
   background-position: center;
 }
 
+.bg::after{
+  content:"";
+  position:absolute;
+  inset:0;
+  background: linear-gradient(to bottom, rgba(0,0,0,.55), rgba(0,0,0,.15) 35%, rgba(0,0,0,.55));
+  pointer-events:none;
+}
+
+.theme-light .bg::after{
+  background: linear-gradient(to bottom, rgba(247,246,242,.92), rgba(247,246,242,.45) 35%, rgba(247,246,242,.92));
+}
+
 @media (max-width: 900px){
   .heroGrid{grid-template-columns: 1fr}
   .card{grid-column: span 12}
-  .avatar{height: 200px}
+  .avatar{height: 230px; object-position: center 15%}
 }
 
 @media (prefers-reduced-motion: reduce){
